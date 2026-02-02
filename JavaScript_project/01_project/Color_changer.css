@@ -1,0 +1,7 @@
+button{
+       width: 200px;
+  height: 60px;
+  font-size: 20px;
+  background-color: darkgray;
+  align-items: center;
+}

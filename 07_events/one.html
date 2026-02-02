@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Event</title>
+</head>
+<body>
+      <!-- ONMOUSEOVER  -->
+      <p onmouseover="changeColor(this)">Mouse yaha lao</p> 
+      <!-- this lagavyu to javascript ne khaber padse ke kaya content upar event lagavanu chhe -->
+      <div id="parent" style="padding:30px; background:lightblue;">Parent<button id="child">Child</button>
+</div>
+
+</body>
+<script>
+function changeColor(el) {
+  el.style.color = "red";
+}
+
+
+//propogation
+//+++++++++++++++++ BUBBLING (FALSE) ++++++++++++++++++++++++++++++++
+// BOTTOM TO TOP
+document.getElementById("parent").addEventListener(
+  "click",
+  () => console.log("Parent clicked"),
+  false
+);
+
+document.getElementById("child").addEventListener(
+  "click",
+  () => console.log("Child clicked"),
+  false
+);
+
+//++++++++++++++++++++++++++++++++ CAPTURING (TRUE) +++++++++++++
+// TOP TO BOTTOM
+
+
+//+++++++++++++++++++++ STOP PROPOGATION +++++++++++++++++++++++++++++++
+
+document.getElementById("parent").addEventListener(
+  "click",
+  () => console.log("Parent clicked"),
+  false
+);
+
+document.getElementById("child").addEventListener(
+  "click",
+  (e) => {
+    e.stopPropagation();
+    console.log("Child clicked only");
+  },
+  true
+);
+</script>
+</html>
